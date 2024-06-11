@@ -22,8 +22,11 @@ const Main = styled.main`
   padding: 64px 32px;
 
   @media ${QUERIES.tabletAndSmaller} {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding: 48px 32px;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    padding: 48px 16px;
   }
 `;
 
