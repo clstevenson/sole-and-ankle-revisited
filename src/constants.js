@@ -26,7 +26,7 @@ export const BREAKPOINTS = {
 
 // for use in files that have media queries
 export const QUERIES = {
-  phoneAndDown: `(max-width: ${BREAKPOINTS.phoneMax / 16}rem)`,
-  tabletAndDown: `(max-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
-  laptopAndDOwn: `(max-width: ${BREAKPOINTS.laptopMax / 16}rem)`,
+  phoneAndSmaller: `(max-width: ${BREAKPOINTS.phoneMax / 16}rem)`,
+  tabletAndSmaller: `(max-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
+  laptopAndSmaller: `(max-width: ${BREAKPOINTS.laptopMax / 16}rem)`,
 };
