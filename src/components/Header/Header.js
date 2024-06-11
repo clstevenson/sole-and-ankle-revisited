@@ -6,6 +6,8 @@ import Logo from "../Logo";
 import SuperHeader from "../SuperHeader";
 import MobileMenu from "../MobileMenu";
 import Icon from "../Icon";
+import UnstyledButton from "../UnstyledButton";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -19,24 +21,32 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
-        <Nav>
+        </LogoWrapper>
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-        </Nav>
-        <Side>
-          <IconWrapper>
-            <Icon id={"shopping-bag"} />
+        </DesktopNav>
+        <IconWrapper>
+          <UnstyledButton>
+            <Icon id={"shopping-bag"} />{" "}
+            <VisuallyHidden>Shopping Bag</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton>
             <Icon id={"search"} />
+            <VisuallyHidden>Search</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton>
             <Icon id={"menu"} />
-          </IconWrapper>
-        </Side>
+            <VisuallyHidden>Menu</VisuallyHidden>
+          </UnstyledButton>
+        </IconWrapper>
+        <Filler />
       </MainHeader>
 
       <MobileMenu
@@ -57,6 +67,7 @@ const MainHeader = styled.div`
   @media ${QUERIES.tabletAndSmaller} {
     border-top: 4px solid ${COLORS.gray[900]};
     padding-right: 29px;
+    align-items: center;
   }
 
   @media ${QUERIES.phoneAndSmaller} {
@@ -65,7 +76,7 @@ const MainHeader = styled.div`
   }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
@@ -75,8 +86,21 @@ const Nav = styled.nav`
   }
 `;
 
-const Side = styled.div`
+const LogoWrapper = styled.div`
   flex: 1;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    flex: revert;
+    margin-right: auto;
+  }
+`;
+
+const Filler = styled.div`
+  flex: 1;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -84,7 +108,6 @@ const IconWrapper = styled.div`
 
   @media ${QUERIES.tabletAndSmaller} {
     display: flex;
-    justify-content: flex-end;
     gap: 34px;
   }
 
