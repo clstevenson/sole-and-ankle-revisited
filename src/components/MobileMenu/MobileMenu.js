@@ -14,7 +14,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <Overlay>
+    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
       <Content aria-label="Mobile menu">
         <CloseButton onClick={onDismiss}>
           <Icon id={"close"} />
@@ -40,33 +40,40 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 
 const Overlay = styled(DialogOverlay)`
   position: fixed;
+  display: flex;
+  justify-content: flex-end;
   top: 0;
   right: 0;
-  background: hsl(0, 0%, 100%);
-  width: 300px;
-  height: 812px;
-  padding: 26px 16px 32px 32px;
+  left: 0;
+  bottom: 0;
+  padding-left: 75px;
+  background: hsla(220, 5%, 40%, 0.8);
 `;
 
 const Content = styled(DialogContent)`
   display: flex;
+  margin-left: auto;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
   background: white;
+  width: 300px;
+  height: 100%;
+  padding: 32px;
   font-family: "Raleway", sans-serif;
 `;
 
 const NavWrapper = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 16px;
 
   a {
     text-decoration: none;
     text-transform: uppercase;
     color: ${COLORS.gray[900]};
-    font-size: {18/16}rem;
+    font-size: ${18 / 16}rem;
+    font-weight: 600;
   }
 
   a:hover {
@@ -75,14 +82,19 @@ const NavWrapper = styled.nav`
 `;
 
 const MenuFooter = styled.footer`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   font-size: {14/16}rem;
-  gap: 14px;
+  gap: 12px;
   
   a {
     text-decoration: none;
     color: ${COLORS.gray[500]};
+    font-weight: 500;
   }
 
   a:hover {
@@ -91,11 +103,12 @@ const MenuFooter = styled.footer`
 `;
 
 const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 16px;
   background-color: white;
   border: none;
-  display: flex;
-  width: 24px;
-  margin-left: auto;
 `;
 
 export default MobileMenu;
